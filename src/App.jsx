@@ -8,6 +8,7 @@ function App() {
   const fetchdata = async () => {
     try {
       const data = await getLandingData();
+      
       console.log(data);
     } catch (e) {
       console.log("error to fetch the data ", e);
