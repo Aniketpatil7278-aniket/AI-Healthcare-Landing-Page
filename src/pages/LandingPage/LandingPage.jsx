@@ -6,7 +6,7 @@ import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
 import About from "../../components/About/About";
 import Statistics from "../../components/Statistics/Statistics";
-
+import Services from "../../components/Services/Services";
 const LandingPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoanding]= useState(true);
@@ -60,7 +60,8 @@ const aboutdata=data.find((item)=>item.type ==="about");
 const statdata = data.filter((item) => item.type === "stat");
 // console.log(statdata);
 
-console.log(data.about);
+const servicesdata = data.filter((item) => item.type === "service");
+console.log(servicesdata);
 
   return (
     <>
@@ -70,6 +71,7 @@ console.log(data.about);
       <About data={aboutdata} />
 
       <Statistics data={statdata} />
+      <Services data={servicesdata} />
     </>
   );
 };
