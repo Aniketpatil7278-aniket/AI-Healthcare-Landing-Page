@@ -7,6 +7,10 @@ import Hero from "../../components/Hero/Hero";
 import About from "../../components/About/About";
 import Statistics from "../../components/Statistics/Statistics";
 import Services from "../../components/Services/Services";
+import Doctors from "../../components/Doctors/Doctors";
+import Testimonials from "../../components/Testimonials/Testimonials";
+
+
 const LandingPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoanding]= useState(true);
@@ -61,7 +65,13 @@ const statdata = data.filter((item) => item.type === "stat");
 // console.log(statdata);
 
 const servicesdata = data.filter((item) => item.type === "service");
-console.log(servicesdata);
+// console.log(servicesdata);
+
+const doctordata=data.filter((item)=> item.type ==="doctor");
+// console.log(doctordata);
+
+const testimonialdata = data.filter((item) => item.type === "testimonial");
+console.log(testimonialdata);
 
   return (
     <>
@@ -72,6 +82,10 @@ console.log(servicesdata);
 
       <Statistics data={statdata} />
       <Services data={servicesdata} />
+
+      <Doctors data={doctordata} />
+
+      <Testimonials data={testimonialdata} />
     </>
   );
 };

@@ -6,7 +6,7 @@ const About = ({ data }) => {
   return (
     <section id="about" className="py-16 md:py-24 bg-slate-50">
       <Container maxWidth="lg">
-        <Paper elevation={2} className="rounded-3xl p-6 md:p-12">
+        <Paper elevation={3} className="rounded-3xl p-6 md:p-12">
           <div className="text-center">
             <Typography
               variant="h3"
@@ -17,7 +17,7 @@ const About = ({ data }) => {
               {data.heading}
             </Typography>
 
-            <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full my-6"></div>
+            <div className="w-100 h-1 bg-blue-600 mx-auto rounded-full my-6"></div>
 
             <Typography
               variant="body1"
