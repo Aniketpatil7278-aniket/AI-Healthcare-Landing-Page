@@ -6,7 +6,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "[name].[contenthash].js",
     clean: true,
   },
 
@@ -17,14 +17,9 @@ module.exports = {
         exclude: /node_modules/,
         use: "babel-loader",
       },
-
       {
         test: /\.css$/,
-        use: [
-          "style-loader",
-          "css-loader",
-          "postcss-loader",
-        ],
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
     ],
   },
@@ -41,11 +36,13 @@ module.exports = {
 
   devServer: {
     port: 3000,
-    historyApiFallback: true,
     open: true,
+    historyApiFallback: true,
+    headers: {
+      "Cache-Control": "public, max-age=31536000",
+      "X-Content-Type-Options": "nosniff",
+    },
   },
 
   mode: "development",
 };
-
-

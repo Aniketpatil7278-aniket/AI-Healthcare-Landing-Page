@@ -41,7 +41,7 @@ const Hero = ({ data }) => {
             <img
               src={data.image}
               alt={data.title}
-              className="w-full rounded-2xl shadow-lg"
+              className="w-full rounded-4xl shadow-lg"
             />
           </div>
         </div>

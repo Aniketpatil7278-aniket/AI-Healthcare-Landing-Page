@@ -9,8 +9,8 @@ import Statistics from "../../components/Statistics/Statistics";
 import Services from "../../components/Services/Services";
 import Doctors from "../../components/Doctors/Doctors";
 import Testimonials from "../../components/Testimonials/Testimonials";
-
-
+import Faq from "../../components/FAQ/Faq";
+import ContactForm from "../../components/Contact/ContactForm";
 const LandingPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoanding]= useState(true);
@@ -71,7 +71,13 @@ const doctordata=data.filter((item)=> item.type ==="doctor");
 // console.log(doctordata);
 
 const testimonialdata = data.filter((item) => item.type === "testimonial");
-console.log(testimonialdata);
+// console.log(testimonialdata);
+
+const faqdata = data.filter((item) => item.type === "faq");
+// console.log(faqdata);
+
+const footerdata = data.find((item) => item.type === "footer");
+console.log(footerdata);
 
   return (
     <>
@@ -86,6 +92,10 @@ console.log(testimonialdata);
       <Doctors data={doctordata} />
 
       <Testimonials data={testimonialdata} />
+ 
+      <Faq data={faqdata} />
+
+      <ContactForm />
     </>
   );
 };
