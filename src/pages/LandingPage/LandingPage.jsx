@@ -66,7 +66,7 @@ const faqdata = data.filter((item) => item.type === "faq");
 // console.log(faqdata);
 
 const footerdata = data.find((item) => item.type === "footer");
-console.log(footerdata);
+// console.log(footerdata);
 
   return (
     <>
