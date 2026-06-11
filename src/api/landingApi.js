@@ -6,3 +6,5 @@ export const getLandingData = async () => {
   const response = await axios.get(API);
   return response.data;
 };
+
+ 

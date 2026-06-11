@@ -11,6 +11,7 @@ import Doctors from "../../components/Doctors/Doctors";
 import Testimonials from "../../components/Testimonials/Testimonials";
 import Faq from "../../components/FAQ/Faq";
 import ContactForm from "../../components/Contact/ContactForm";
+import Footer from "../../components/Footer/Footer";
 const LandingPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoanding]= useState(true);
@@ -96,6 +97,8 @@ console.log(footerdata);
       <Faq data={faqdata} />
 
       <ContactForm />
+
+      <Footer data={footerdata} />
     </>
   );
 };
