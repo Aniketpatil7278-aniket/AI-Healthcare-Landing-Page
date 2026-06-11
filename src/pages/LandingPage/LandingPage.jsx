@@ -17,19 +17,7 @@ const LandingPage = () => {
   const [loading, setLoanding]= useState(true);
   const [errormessage, setErroormessage] = useState("");
 
-//   const fetchData = async () => {
-//     try {
-//       const result = await getLandingData();
-//       setData(result);
-//       console.log(result);
-//     } catch (error) {
-//         setErroormessage("Something went wrong...");
-//       console.error("Error fetching landing data:", error);
-//     }finally{
-//         setLoanding(false);
-//         // <ErrorMessage message={errormessage} />
-//     }
-//   };
+
 
  useEffect(() => {
    const fetchData = async () => {
