@@ -17,7 +17,6 @@ const ContactForm =()=>{
         email:"",
         phone:"",
         department:"",
-        subject:"",
         message:"",
     }
 
@@ -40,12 +39,17 @@ const ContactForm =()=>{
           </div>
 
           <Paper elevation={4} className="p-8 rounded-5xl">
-            <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={ContactValidation}>
+            <Formik
+              initialValues={initialValues}
+              onSubmit={handleSubmit}
+              validationSchema={ContactValidation}
+            >
               {({ values, errors, touched, handleChange, handleBlur }) => (
                 <Form>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <TextField
                       fullWidth
+                      required
                       label="Full Name"
                       name="fullName"
                       value={values.fullName}
@@ -56,97 +60,87 @@ const ContactForm =()=>{
                     />
 
                     <TextField
-                    fullWidth
-                    label="Email Address"
-                    name="email"
-                    value={values.email}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    error={touched.email && Boolean(errors.email)}
-                    helperText={touched.email && errors.email} 
+                      fullWidth
+                      required
+                      label="Email Address"
+                      name="email"
+                      value={values.email}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      error={touched.email && Boolean(errors.email)}
+                      helperText={touched.email && errors.email}
                     />
 
                     <TextField
-                    fullWidth
-                    label="Phone Number"
-                    name="phone"
-                    value={values.phone}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    error={touched.phone && Boolean(errors.phone)}
-                    helperText={touched.phone && errors.phone}
-                     />
+                      fullWidth
+                      required
+                      label="Phone Number"
+                      name="phone"
+                      value={values.phone}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      error={touched.phone && Boolean(errors.phone)}
+                      helperText={touched.phone && errors.phone}
+                    />
 
-                     <TextField 
-                     fullWidth
-                     label="Subject"
-                     name="subject"
-                     value={values.subject}
-                     onChange={handleChange}
-                     />
+                    <TextField
+                      select
+                      fullWidth
+                      label="Department"
+                      name="department"
+                      value={values.department}
+                      onChange={handleChange}
+                    >
+                      <MenuItem value="General Inquiry">
+                        General Inquiry
+                      </MenuItem>
 
-                      <TextField
-                    select
-                    fullWidth
-                    label="Department"
-                    name="department"
-                    value={values.department}
-                    onChange={handleChange}
-                  >
-                    <MenuItem value="General Inquiry">
-                      General Inquiry
-                    </MenuItem>
+                      <MenuItem value="Appointment Booking">
+                        Appointment Booking
+                      </MenuItem>
 
-                    <MenuItem value="Appointment Booking">
-                      Appointment Booking
-                    </MenuItem>
+                      <MenuItem value="Telemedicine Support">
+                        Telemedicine Support
+                      </MenuItem>
 
-                    <MenuItem value="Telemedicine Support">
-                      Telemedicine Support
-                    </MenuItem>
+                      <MenuItem value="Billing & Payments">
+                        Billing & Payments
+                      </MenuItem>
 
-                    <MenuItem value="Billing & Payments">
-                      Billing & Payments
-                    </MenuItem>
-
-                    <MenuItem value="Technical Support">
-                      Technical Support
-                    </MenuItem>
-                  </TextField>
-
+                      <MenuItem value="Technical Support">
+                        Technical Support
+                      </MenuItem>
+                    </TextField>
                   </div>
                   <div className="mt-6">
                     <TextField
-                    fullWidth
-                    multiline
-                    rows={5}
-                    label="Message"
-                    name="message"
-                    value={values.message}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    error={
-                      touched.message &&
-                      Boolean(errors.message)
-                    }
-                    helperText={
-                      touched.message &&
-                      errors.message
-                    }
-                  />
-                </div>
+                      fullWidth
+                      required
+                      multiline
+                      rows={5}
+                      label="Message"
+                      name="message"
+                      value={values.message}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      error={touched.message && Boolean(errors.message)}
+                      helperText={touched.message && errors.message}
+                    />
+                  </div>
 
-                <div className="mt-8 text-center">
+                  <div className="mt-8 text-center">
                     <Button
-                    type="Submit"
-                    variant="contained"
-                    size="large"
-                    sx={{
-                        textTransform:"none",
-                        borderRadius:"10px"
-                    }}
-                    >Submit</Button>
-                </div>
+                      type="Submit"
+                      variant="contained"
+                      size="large"
+                      sx={{
+                        textTransform: "none",
+                        borderRadius: "10px",
+                      }}
+                    >
+                      Submit
+                    </Button>
+                  </div>
                 </Form>
               )}
             </Formik>

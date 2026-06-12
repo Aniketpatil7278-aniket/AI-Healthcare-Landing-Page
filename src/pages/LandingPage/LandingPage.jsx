@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+
 import { getLandingData } from "../../api/landingApi";
+
 import Loader from "../../components/Common/Loader";
 import ErrorMessage from "../../components/Common/ErrorMessage";
+
 import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
 import About from "../../components/About/About";
@@ -11,82 +14,92 @@ import Doctors from "../../components/Doctors/Doctors";
 import Testimonials from "../../components/Testimonials/Testimonials";
 import Faq from "../../components/FAQ/Faq";
 import ContactForm from "../../components/Contact/ContactForm";
+import Newsletter from "../../components/Newsletter/Newsletter";
 import Footer from "../../components/Footer/Footer";
+
 const LandingPage = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoanding]= useState(true);
-  const [errormessage, setErroormessage] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await getLandingData();
 
+        console.log(result);
 
- useEffect(() => {
-   const fetchData = async () => {
-     try {
-       const result = await getLandingData();
-       console.log(result);
-       setData(result);
-     } catch (e) {
-        console.log(e);
-       setErroormessage("Something went wrong...");
-     } finally {
-       setLoanding(false);
-     }
-   };
+        setData(result);
+      } catch (error) {
+        console.log(error);
 
-   fetchData();
- }, []);
+        setErrorMessage("Something went wrong...");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  if(loading) return <Loader />
+    fetchData();
+  }, []);
 
-  if(errormessage) return <ErrorMessage message={errormessage} />
+  if (loading) {
+    return <Loader />;
+  }
 
-  // Find header data from API response
+  if (errorMessage) {
+    return <ErrorMessage message={errorMessage} />;
+  }
+
+  // Header
   const headerData = data.find((item) => item.type === "header");
-//   console.log(headerData);
 
-  const herodata= data.find((item) =>item.type ==="hero" );
-//   console.log(herodata); 
+  // Hero
+  const heroData = data.find((item) => item.type === "hero");
 
-const aboutdata=data.find((item)=>item.type ==="about");
-// console.log(aboutdata);
+  // About
+  const aboutData = data.find((item) => item.type === "about");
 
-const statdata = data.filter((item) => item.type === "stat");
-// console.log(statdata);
+  // Statistics
+  const statData = data.filter((item) => item.type === "stat");
 
-const servicesdata = data.filter((item) => item.type === "service");
-// console.log(servicesdata);
+  // Services
+  const servicesData = data.filter((item) => item.type === "service");
 
-const doctordata=data.filter((item)=> item.type ==="doctor");
-// console.log(doctordata);
+  // Doctors
+  const doctorData = data.filter((item) => item.type === "doctor");
 
-const testimonialdata = data.filter((item) => item.type === "testimonial");
-// console.log(testimonialdata);
+  // Testimonials
+  const testimonialData = data.filter((item) => item.type === "testimonial");
 
-const faqdata = data.filter((item) => item.type === "faq");
-// console.log(faqdata);
+  // FAQ
+  const faqData = data.filter((item) => item.type === "faq");
 
-const footerdata = data.find((item) => item.type === "footer");
-// console.log(footerdata);
+  // Footer
+  const footerData = data.find((item) => item.type === "footer");
 
   return (
     <>
       <Header data={headerData} />
-      <Hero data={herodata} />
 
-      <About data={aboutdata} />
+      <Hero data={heroData} />
 
-      <Statistics data={statdata} />
-      <Services data={servicesdata} />
+      <About data={aboutData} />
 
-      <Doctors data={doctordata} />
+      <Statistics data={statData} />
 
-      <Testimonials data={testimonialdata} />
- 
-      <Faq data={faqdata} />
+      <Services data={servicesData} />
+
+      <Doctors data={doctorData} />
+
+      <Testimonials data={testimonialData} />
+
+      <Faq data={faqData} />
 
       <ContactForm />
 
-      <Footer data={footerdata} />
+      <Newsletter />
+
+      <Footer data={footerData} />
     </>
   );
 };

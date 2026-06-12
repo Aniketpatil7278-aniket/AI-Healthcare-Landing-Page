@@ -7,27 +7,29 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+
 const Footer = ({ data }) => {
   if (!data) return null;
 
   return (
     <footer className="bg-slate-900 text-white py-16">
       <Container maxWidth="lg">
+        {/* Top Footer Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Company Info */}
           <div>
-            <Typography variant="h5" fontWeight="bold" gutterBottom>
+            <Typography variant="h4" fontWeight="bold" gutterBottom>
               {data.companyName}
             </Typography>
 
-            <Typography variant="body2" className="text-gray-300">
+            <Typography variant="body1" className="text-gray-300">
               {data.description}
             </Typography>
           </div>
 
           {/* Quick Links */}
           <div>
-            <Typography variant="h6" fontWeight="bold" gutterBottom>
+            <Typography variant="h5" fontWeight="bold" gutterBottom>
               Quick Links
             </Typography>
 
@@ -47,23 +49,26 @@ const Footer = ({ data }) => {
 
           {/* Contact Info */}
           <div>
-            <Typography variant="h6" fontWeight="bold" gutterBottom>
+            <Typography variant="h5" fontWeight="bold" gutterBottom>
               Contact Us
             </Typography>
 
-            <Typography className="text-gray-300 mb-2">
-              <LocationOnIcon /> {data.address}
-            </Typography>
+            <div className="flex items-center gap-3 mb-3">
+              <LocationOnIcon />
+              <span>{data.address}</span>
+            </div>
 
-            <Typography className="text-gray-300 mb-2">
-              <EmailIcon />  {data.email}
-            </Typography>
+            <div className="flex items-center gap-3 mb-3">
+              <EmailIcon />
+              <span>{data.email}</span>
+            </div>
 
-            <Typography className="text-gray-300 mb-4">
-              <LocalPhoneIcon /> {data.phone}
-            </Typography>
+            <div className="flex items-center gap-3 mb-4">
+              <LocalPhoneIcon />
+              <span>{data.phone}</span>
+            </div>
 
-            {/* Social Links */}
+            {/* Social Media Icons */}
             <div className="flex gap-2">
               <IconButton
                 component="a"
@@ -104,9 +109,9 @@ const Footer = ({ data }) => {
           </div>
         </div>
 
-        {/* Bottom Line */}
-        <div className="border-t border-slate-700 mt-10 pt-6 text-center">
-          <Typography variant="body2" className="text-gray-400">
+        {/* Bottom Footer */}
+        <div className="border-t border-slate-700 mt-10 pt-6">
+          <Typography variant="body2" align="center" className="text-gray-400">
             © {new Date().getFullYear()} {data.companyName}. All Rights
             Reserved.
           </Typography>
